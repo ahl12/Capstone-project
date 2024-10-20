@@ -1,0 +1,58 @@
+
+import { useEffect, useState } from 'react';
+import './InputFormStyling.css'
+
+export function StockInputForm() {
+  const [stockSymbol, setStockSymbol] = useState("");
+  const [qty, setQty] = useState("");
+  const [purchasePrice, setPurchasePrice] = useState("");
+  let stockList = [stockSymbol,qty,purchasePrice];
+  console.log("Stock info: "+stockList);
+
+  // useEffect(() =>{
+  //   fetch("https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo")
+  //     .then((res) => res.json())
+  //     .then((data) => setstockSymbol(data))
+  // },[]);
+  // console.log(stockSymbol);
+
+  function handleSubmit(event){
+  }
+
+  return (
+    <div>
+      <form className="inputField" onSubmit={handleSubmit}>
+
+        <input 
+        type="text" 
+        placeholder="Stock Symbol" 
+        defaultValue={stockSymbol}
+        onChange={(e) => setStockSymbol(e.target.value)}
+        />
+
+        <input 
+        type="number" 
+        placeholder="Quantity" 
+        defaultValue={qty} 
+        min="0"
+        onChange={(e) => setQty(e.target.value)}
+        />
+
+        <input 
+        type="number" 
+        placeholder="Purchase Price (USD)" 
+        defaultValue={purchasePrice}
+        onChange={(e) => setPurchasePrice(e.target.value)}
+        />
+
+        <button 
+        type="submit">Add Stock</button>
+        
+       
+
+    </form>
+    </div>
+  );
+}
+
+
